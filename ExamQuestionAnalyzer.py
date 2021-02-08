@@ -19,7 +19,7 @@ class ExamQuestionAnalyzer(tk.Frame):
     """
     ERROR_CODE_HEADER = 'Error Code'
 
-    def __init__(self, default_grade=100, manual_grading_filename=None, errorcodes_filename=None,
+    def __init__(self, manual_grading_filename=None, errorcodes_filename=None, default_grade=100,
                  range_constraint=None):
 
         super().__init__(master=tk.Tk())
@@ -90,6 +90,10 @@ class ExamQuestionAnalyzer(tk.Frame):
 
     def calculate_grades(self):
         # make sure the files are the most updated before calculating
+        if not self.manual_grading_filename:
+            raise ValueError("Manual grading file not loaded! Please load before calculating grades")
+        if not self.errorcodes_filename:
+            raise ValueError("Manual grading file not loaded! Please load before calculating grades")
         self._load_manual_grading_file()
         self._load_errorcodes_file()
         self.grades = np.full((len(self.manual_grading_df.index)), self.default_grade)
