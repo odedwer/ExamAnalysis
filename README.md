@@ -14,4 +14,4 @@ q_analyzer = ExamQuestionAnalyzer(manual_grading_filename=<default None, path to
                                   errorcodes_filename=<default None, path to errorcodes file>,
                                   default_grade=<default 100, highest possible grade in the question>,
                                   range_constraint=<default None, will be the maximal value of the x axis in the histogram>)
-'''
+```
